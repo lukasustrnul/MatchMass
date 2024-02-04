@@ -4,3 +4,5 @@ Compare your experimental data from mass spectrometry with a table of theoretica
 The online tool for matching experimental and theoretical m/z values was developed during the chemical research focused to study mechanism of macrocyclization reactions.
 
 All the details are explained in the app itself and can be found at: 
+
+Main application file in the repository is MatchMass.py. Other files contains additional content and data.
