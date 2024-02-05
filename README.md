@@ -7,6 +7,19 @@ Mass spectrometry is very sensitive and precise analytical technique for identif
 In the near future, MatchMass will be hosted at Tallinn University of Technology domain (taltech.ee). However, you can test it as a **locally running browser version** made in [stlite](https://edit.share.stlite.net/?sampleAppId=intro). The app code and data are encoded into the URL as a hash like `https://share.stlite.net/#!ChBz...`. Probably due to the excessive length of the link I was not able to make a functional hyperlink here in GitHub. Therefore, please find *stlite_browser_version.md* file and copy the full link (ctrl+a) from there to new tab at your browser.
 
 
+## **How it works?** 
+MatchMass takes at least one file with experimental results (m/z of signal and its abundance) and exactly one file containing theoretical m/z values with names of molecules. Then, it will perform matching using user-defined experimental errors, abundance threshold (minimum signal intensity), and ions of interest. Ions of molecules from theoretical table are found in the experimental data. The results of matching can be checked in plot and in table with aggregated results from all provided experimental files. Finally, the data can be downloaded as a MS Excel file containing all important details. 
+
+### Now, let's check it step by step...
+
+
+
+
+
+
+
+
+
 ## **Technical comments and challenges during the development** 
 Main application file in the repository is MatchMass.py. Other files contains additional content, data and function definitions.
 
