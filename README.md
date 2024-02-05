@@ -12,6 +12,7 @@ MatchMass takes at least one file with experimental results (m/z of signal and i
 
 ### Now, let's check it step by step...
 
+![Instructions: Figure 1](https://github.com/lukasustrnul/MatchMass/blob/main/instruct_jpg/matchmass_instructions_1.jpg 'Instructions: Figure 1')  
 
 
 
