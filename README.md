@@ -1,8 +1,15 @@
-# MatchMass
-Compare your experimental data from mass spectrometry with a table of theoretical m/z values to quickly find out which molecules and ions of interest are really present in the sample.
+# MatchMass - Mass Spectrometry Matching Tool
+### Compare your experimental data from mass spectrometry (MS) with a table of theoretical mass-to-charge ratio (m/z) values to quickly find out which molecules and ions of interest are present in the sample.
+***
+### **Brief overview**  
+Mass spectrometry is very sensitive and precise analytical technique for identification and quantification of molecules; therefore, it isused in many fields of science. MatchMass was developed to provide free easy-to-use tool to help researchers with identification of molecules in complex mixtures. The MatchMass was developed during the chemical research focused to study mechanism of macrocyclization reactions. Additional information about our motivation and research can be found in the app itself. 
 
-The online tool for matching experimental and theoretical m/z values was developed during the chemical research focused to study mechanism of macrocyclization reactions.
+In the near future, MatchMass will be hosted at Tallinn University of Technology domain (taltech.ee). However, you can test it as a **locally running browser version** made in stlite. The app code and data are encoded into the URL as a hash like `https://share.stlite.net/#!ChBz...`. Probably due to the excessive length of the link I was not able to make a functional hyperlink here in GitHub. Therefore, please find *stlite_browser_version.md* file and copy the full link from there to new tab at your browser.
+***
 
-All the details are explained in the app itself and can be found at: 
+### **Technical comments and references**  
+Main application file in the repository is MatchMass.py. Other files contains additional content, data and function definitions.
 
-Main application file in the repository is MatchMass.py. Other files contains additional content and data.
+[Read more about stlite and how it allows you to share apps built with streamlit](https://edit.share.stlite.net/?sampleAppId=intro)
+
+Interested in chemistry? Read more about [Mass spectrometry on wikipedia](https://en.wikipedia.org/wiki/Mass_spectrometry)
