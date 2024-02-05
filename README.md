@@ -15,35 +15,32 @@ Check for the numbers in following figures
 1. Notice expanders with information about project, authors, funding and detailed instructuions how to use the MatchMass
 2. Let's assume you dont have your own data at the moment. You can download our example files of experimental data and table of theoretical molecules
 3. Upload the experimental and theoretical files to correct upload fields
+![Instructions: Figure 1](https://github.com/lukasustrnul/MatchMass/blob/main/instr/matchmass_instructions_1edit.jpg 'Instructions: Figure 1')
 * In the next step, you need to set experimental error. Ideally, based on the precision of your MS instrument. Abundance can be set to zero or higher if you are not interested in signals of low intensity.
 4. If you want to set different experimental error or abundance threshold for each experimental file then you can change it to "Yes" and table of files will appear.
 5. Set the error to 0.01 and abundance to 0.00 for our example files.
+![Instructions: Figure 2](https://github.com/lukasustrnul/MatchMass/blob/main/instr/matchmass_instructions_2edit.jpg 'Instructions: Figure 2')
 6. Pick ions from particular column based on the mode of measurement. Example data contains ions from positive mode MS; thereofore, you can select some or all checkboxes from the first column.
+![Instructions: Figure 3](https://github.com/lukasustrnul/MatchMass/blob/main/instr/matchmass_instructions_3edit.jpg 'Instructions: Figure 3')
 * Now, you can visually check which areas and signals will be matched using current settings for experimental error and ions.
 7. Choose which experimental file you want to see in the plot.
 8. You can switch the plot to logarithmic scale to improve visibility of low abundance signals.
 9. Use slider to check specific regions of your MS data.
 10. You can also zoom directly in the plot and move along x-axis with the help of slider.
 11. If you dont see overlap of experimental data and theoretical m/z, then you can increase experimental error or add more ions.
+![Instructions: Figure 4](https://github.com/lukasustrnul/MatchMass/blob/main/instr/matchmass_instructions_4edit.jpg 'Instructions: Figure 4')
 12. Hit the "Find matching signals!" button.
+![Instructions: Figure 5](https://github.com/lukasustrnul/MatchMass/blob/main/instr/matchmass_instructions_5edit.jpg 'Instructions: Figure 5')
 13. Message informing about successful or failed matching will appear under the button.
 14. Select which file you want to see at the plot.
 15. You can visually check which signals were matched. Navigation through the plot is same as in the previous plot.
+![Instructions: Figure 6](https://github.com/lukasustrnul/MatchMass/blob/main/instr/matchmass_instructions_6edit.jpg 'Instructions: Figure 6')
 16. Table contains results of matching for all uploaded experimental files
 17. Click to download MS Excel file with complete results
-18. Excel file contains: sheet with overview of all uploaded files and used experimental errors, sheet with full table of theoretical m/z (including all ions and ID number generated for each original molecule), sheet with aggregated results from all files as shown in the app, sheet for each uploaded file with matching results for the particular file. 
+18. Excel file contains: sheet with overview of all uploaded files and used experimental errors, sheet with full table of theoretical m/z (including all ions and ID number generated for each original molecule), sheet with aggregated results from all files as shown in the app, sheet for each uploaded file with matching results for the particular file.
+![Instructions: Figure 7](https://github.com/lukasustrnul/MatchMass/blob/main/instr/matchmass_instructions_7edit.jpg 'Instructions: Figure 7') 
 
    
-
-
-
-
-![Instructions: Figure 2](https://github.com/lukasustrnul/MatchMass/blob/main/instruct_jpg/matchmass_instructions_1.jpg 'Instructions: Figure 3') 
-
-
-
-
-
 ## **Technical comments and challenges during the development** 
 Main application file in the repository is MatchMass.py. Other files contains additional content, data and function definitions.
 
