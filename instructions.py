@@ -89,3 +89,5 @@ def instructions():
              While it is always 0.0001 Da for experimental data, the bar width for 
              theoretical m/z values corresponds to double of experimental error or to 0.005 Da if the error is set to zero.
              This may help to visually evaluate your settings for matching.""")
+    st.write(""" * If you need to calculate a monoisotopic mass or are trying to find a possible molecular formula for 
+             an unidentified mass, we recommend using [ChemCalc](http://chemcalc.org/).""")
