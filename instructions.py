@@ -18,7 +18,7 @@ def instructions():
              for column names (see examples below).
              Uploader supports .XLS, .XLSX and .CSV files.  
              *Experimental file:* First column contains m/z values and second column is abundance (intensity of signal).  
-             *Theoretical file:* First column with molecule name and second column with theoretical m/z values.
+             *Theoretical file:* First column with molecule name and second column with theoretical mass (not molar mass) or m/z values for ions.
              """)
     col1, col2 = st.columns(2, gap = 'medium')
     with col1:
@@ -53,7 +53,7 @@ def instructions():
     st.write(""" * 7. Please, cite this online app.  
              We recommend that if you use MatchMass you cite it with these two references in the citation list:  
                  1. .........TBA........, Author: Lukas Ustrnul, published February 2024.  
-                 2. .........TBA.........  
+                 2. .........TBA........, article will be submitted to peer reviewed journal during Q1 2024.    
                  This will help to increase the visibility of this online tool.""" )
     st.markdown("***")
     st.write("#### Tips and additional notes")

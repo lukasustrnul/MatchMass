@@ -134,14 +134,14 @@ if "abund_thrs_no_val" not in st.session_state:
 if st.session_state["err_abund_def"] == 'No':
     col101, col102= st.columns(2, gap = 'medium')
     with col101:
-        exp_dfs_table['exp_err'] = st.number_input('Insert experimental error',
+        exp_dfs_table['exp_err'] = st.number_input('Insert experimental error (Da)',
                                                    step=0.00001,
                                                    key = "err_no_val",
                                                    value = st.session_state["err_no_val"],
                                                    format="%0.5f"
                                                    )
     with col102:
-        exp_dfs_table['abund_thrs'] = st.number_input('Insert abundance threshold',
+        exp_dfs_table['abund_thrs'] = st.number_input('Insert abundance threshold (in a scale from experimental data)',
                                                       step=0.01,
                                                       key = "abund_thrs_no_val",
                                                       value = st.session_state["abund_thrs_no_val"]

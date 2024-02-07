@@ -48,15 +48,12 @@ def about():
              Prof. Riina Aav ([ETIS](https://www.etis.ee/CV/Riina_Aav)) for her support, and all members of Supramolecular group for positive atmosphere.""")
     st.write("##### ")
     st.write("##### Funding")
-    st.write("""Development of MatchMass was supported by European Commission grant [VFP18059](https://www.etis.ee/Portal/Projects/Display/a535003a-03b5-45c8-8168-49d68ffdb3ec)
-             and Estonian Research Council ([ETAG](https://etag.ee/en/)) grants [PRG399](https://www.etis.ee/Portal/Projects/Display/821f6a9c-3f7d-49c4-86b8-2747c4e210a2),
+    st.write("""Development of MatchMass was supported by Estonian Research Council ([ETAG](https://etag.ee/en/)) grants [PRG399](https://www.etis.ee/Portal/Projects/Display/821f6a9c-3f7d-49c4-86b8-2747c4e210a2),
              [MOBJD592](https://www.etis.ee/Portal/Projects/Display/6dd1c9dc-6e88-4983-98c8-3b31f325bfd0), 
              [PRG2169](https://www.etis.ee/Portal/Projects/Display/2765d91c-0c57-43ee-ae98-d7fefbcedf88)""")
     col1, col2, col3 = st.columns(3, gap = 'medium')
     with col1:
         st.image('files/Estonian-Research-Council-logo-color_RGB.png'
-                 )
-        st.image('files/EN_Co-fundedbytheEU_RGB_NEG.png'
                  )
         st.image('files/TalTech_logo_JPG.jpg'
                  )
