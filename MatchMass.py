@@ -64,14 +64,14 @@ with col3:
     st.write("##### Download example")
     st.write("You can test the app with our simulated data.")
     with open('files/simulated_theor.xlsx', 'rb') as my_file:
-        st.download_button(label = 'Download simulated theoretical m/z table!', 
+        st.download_button(label = 'Download simulated theoretical m/z table', 
                            data = my_file, 
                            file_name = 'theoretical_simulated.xlsx', 
                            mime = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
                            use_container_width=True,
                            help = "m/z values were randomly generated")
     with open('files/simulated_exp_full.xlsx', 'rb') as my_file:
-        st.download_button(label = 'Download simulated experimental data!', 
+        st.download_button(label = 'Download simulated experimental data', 
                            data = my_file, 
                            file_name = 'experimental_simulated.xlsx', 
                            mime = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
