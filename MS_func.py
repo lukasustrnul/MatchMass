@@ -148,6 +148,9 @@ def match_data(exp_dfs_table, exp_dfs, theor_df_full):
             
             # save compared data for the file to the exp_dfs_matched
             exp_dfs_matched[ind] = compared_data.copy()
+            
+            # edit column with orginal datafile name so it would be clear that it contains abundance after the pivoting of table
+            compared_data['orig_file'] = orig_datafile_name + '_abund'
     
             ###########################################################################################################
             
