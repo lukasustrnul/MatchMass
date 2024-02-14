@@ -20,7 +20,7 @@ from plots import make_plot1, make_plot2
 # set layout of the page and title
 st.set_page_config(layout="wide", initial_sidebar_state="expanded", page_title="MatchMass")
 st.header('MatchMass - Mass Spectrometry Matching Tool', divider = "rainbow")
-st.markdown("""##### Quickly compare your experimental results with a table of theoretical m/z values to find out which molecules and ions of interest are really present in the mixture.""")
+st.markdown("""##### Quickly compare your experimental results with a table of theoretical *m/z* values to find out which molecules and ions of interest are really present in the mixture.""")
 
 # add expander with instructions
 local_css("files/style.css")
@@ -50,7 +50,7 @@ with col1:
                      label_visibility="visible"
                      )
 with col2:
-    st.write('##### Upload table of theoretical m/z')
+    st.write('##### Upload table of monoisotopic masses (or *m/z*)')
     theor_upload = st.file_uploader(
         'Only one file is allowed. \n\n You can use the .CSV, .XLSX or .XLS filetype here', 
                      type= ['xlsx','xls','csv'],
@@ -64,14 +64,14 @@ with col3:
     st.write("##### Download example")
     st.write("You can test the app with our simulated data.")
     with open('files/simulated_theor.xlsx', 'rb') as my_file:
-        st.download_button(label = 'Download simulated theoretical m/z table', 
+        st.download_button(label = 'Download simulated theoretical masses table!', 
                            data = my_file, 
                            file_name = 'theoretical_simulated.xlsx', 
                            mime = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
                            use_container_width=True,
-                           help = "m/z values were randomly generated")
+                           help = "monoisotopic masses were randomly generated")
     with open('files/simulated_exp_full.xlsx', 'rb') as my_file:
-        st.download_button(label = 'Download simulated experimental data', 
+        st.download_button(label = 'Download simulated experimental data!', 
                            data = my_file, 
                            file_name = 'experimental_simulated.xlsx', 
                            mime = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
@@ -115,12 +115,12 @@ st.markdown("***")
 if "err_abund_def" not in st.session_state:
     st.session_state["err_abund_def"] = "No"
 # write informative text about setting experimental error and abundance threshold 
-st.write("#### Experimental error and abundance threshold has to be defined.") 
-st.write("""Experimental error value should be based on your spectrometer precision. If you set too small value it may lead to less matches found.  
+st.write("#### Mass accuracy and abundance threshold has to be defined.") 
+st.write("""Mass accuracy value should be based on your spectrometer specification. If you set too small value it may lead to less matches found.  
          Abundance threshold value is used to exclude signals with low abundance.""")     
 # add the radio button for switching between setting global experimental error or different error value for each file
 st.radio(
-    "Do you wish to set different experimental error and abundance threshold for each uploaded file? ",
+    "Do you wish to set different mass accuracy and abundance threshold for each uploaded file? ",
     ['No','Yes'],
     key = "err_abund_def" 
     )
@@ -134,7 +134,7 @@ if "abund_thrs_no_val" not in st.session_state:
 if st.session_state["err_abund_def"] == 'No':
     col101, col102= st.columns(2, gap = 'medium')
     with col101:
-        exp_dfs_table['exp_err'] = st.number_input('Insert experimental error (Da)',
+        exp_dfs_table['exp_err'] = st.number_input('Insert mass accuracy (Da)',
                                                    step=0.00001,
                                                    key = "err_no_val",
                                                    value = st.session_state["err_no_val"],
@@ -147,7 +147,7 @@ if st.session_state["err_abund_def"] == 'No':
                                                       value = st.session_state["abund_thrs_no_val"]
                                                       )
 elif st.session_state["err_abund_def"] == 'Yes':
-    st.write('Please edit values in columns for experimental error and abundance threshold.')
+    st.write('Please edit values in columns for mass accuracy and abundance threshold.')
     exp_dfs_table = st.data_editor(exp_dfs_table, 
                                    disabled=["orig_name",'nickname'],
                                    column_config={
@@ -169,21 +169,24 @@ else:
 # divide graphically upload part and add heading
 st.markdown("***")  
 st.write('### Pick ions which you want to match with your experimental data')
+st.write('''Generally, there are two approaches. First, to upload table containing 
+         monoisotopic mass of neutral molecules and then pick cations or anions 
+         of interest. Second, to upload table containing final m/z values for 
+         various ions and then choose option to use uploaded theoretical m/z.''')
 col11, col12, col13 = st.columns(3, gap = 'medium')
 with col11:
     st.write('Pick from following for positive mode MS experimental results.')
     for ion in pos_ion_list:
         ion['add_to_df'] = st.checkbox(ion['ion'], help='tick to add ion to the theoretical table')
 with col12:
-    st.write('Pick from following for negative mode MS experimental results.')
+    st.write('''Pick from following for negative mode MS experimental results.  
+             FA = formate anion, Ac = acetate anion''')
     for ion in neg_ion_list:
         ion['add_to_df'] = st.checkbox(ion['ion'], help='tick to add ion to the theoretical table')
 with col13:
-    st.write("""Keeping original mass [M] from provided theor. m/z table is not recommended. 
-             Note that mass difference from [M]+ is only mass of electron.  
-             Generally, this option can be useful if provided table already contains ions
-             of interest instead of neutral masses.""")
-    M_orig['add_to_df'] = st.checkbox(M_orig['ion'], help='tick to keep [M] for matching')
+    st.write("""Keeping the original values from the user-supplied theoretical table should only be used if the table
+             already contained *m/z* values for the ions of interest instead of neutral monoisotopic masses.""")
+    M_orig['add_to_df'] = st.checkbox(M_orig['ion'], help='tick to keep m/z values as provided in uploaded table of theoretical values')
     
 
 ############### prepare full table of theoretical masses
@@ -201,9 +204,9 @@ theor_df_full = add_ions(theor_df, ion_list, exp_err)
 ################### crate first plot for comparing experimental and theoretical data
 # divide graphically ion picking part and add heading
 st.markdown("***") 
-st.write('### You can visually compare position of experimental signals with the theoretical m/z values')
+st.write('### You can visually compare position of experimental signals with the theoretical *m/z* values')
 # dropdown menu to pick data for plot
-pick1 = st.selectbox('Choose an experimental file to plot against theoretical m/z of choosen ions:', list(exp_dfs_names.keys()))
+pick1 = st.selectbox('Choose an experimental file to plot against theoretical *m/z* of choosen ions:', list(exp_dfs_names.keys()))
 file_pick1=exp_dfs_names[pick1]
 df1=exp_dfs[file_pick1]
 

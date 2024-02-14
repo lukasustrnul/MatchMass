@@ -17,8 +17,9 @@ def instructions():
              are needed. It is crucial to use correct order of columns and to use first row 
              for column names (see examples below).
              Uploader supports .XLS, .XLSX and .CSV files.  
-             *Experimental file:* First column contains m/z values and second column is abundance (intensity of signal).  
-             *Theoretical file:* First column with molecule name and second column with theoretical mass (not molar mass) or m/z values for ions.
+             *Experimental file:* First column contains *m/z* values and second column is abundance (intensity of signal).  
+             *Theoretical file:* First column with compound name and second column with theoretical monoisotopic masses calculated
+             based on the molecular formula (or *m/z* values if you providing table of ions).
              """)
     col1, col2 = st.columns(2, gap = 'medium')
     with col1:
@@ -28,25 +29,25 @@ def instructions():
                  )
     with col2:
         st.image('files/theor_png_example.jpg', 
-                 caption = 'example of file with theoretical m/z',
+                 caption = 'example of file with theoretical mass',
                  width = 400
                  )
     st.write(""" * 1. Upload data.  
              (You can download and use our simulated data to test the functionality)""" )
-    st.write(""" * 2. Define experimental error and threshold for abundance.  
+    st.write(""" * 2. Define mass accuracy and threshold for abundance.  
              It can be done for all files at once or for each file separately. 
-             Keep in mind that large experimental error can lead to wrong matching 
-             if some of theoretical m/z are near to each other. 
+             Keep in mind that higher values of mass accuracy can lead to wrong matching 
+             if some of theoretical *m/z* are near to each other. 
              However, you will get warning note in the matched data and 
              check such signals later manually. """ )
-    st.write(""" * 3. Pick ions to add in your table of theoretical masses.  
+    st.write(""" * 3. Pick ions to add in your table of theoretical *m/z* values.  
              Notice: Although you can add both, positive and negative ions, at the same time, 
              such a combination cannot occur in any real MS measurement.  
-             First plot of experimental data overlayed with theoretical masses 
+             First plot of experimental data overlayed with theoretical *m/z* values 
              can be used to estimate which ions to add.""" )
     st.write(""" * 4. Push the 'Matching' button""" )
     st.write(""" * 5. Check the results in the plot.  
-             Chart shows which experimental signals were matched with theoretical m/z values.  
+             Chart shows which experimental signals were matched with theoretical *m/z* values.  
              If you are not happy with the results you can try to make changes 
              in steps 2. and 3. and then push the 'Matching' button again.""" )
     st.write(""" * 6. Download the results""" )
@@ -60,7 +61,7 @@ def instructions():
     st.write(""" * Our example data under 'Download dummy data' are purely simulated 
              values and does not correspond to any real molecules. Experimental data was 
              simulated by adding [M]+, [M+H]+, [M+Na]+ and [2M+H]+ ions. Random error 
-             to m/z values was obtained by adding random numbers from normal distribution 
+             to *m/z* values was obtained by adding random numbers from normal distribution 
              with standard deviation 0.003. Abundance was randomly generated from 
              uniform distribution from range 50 to 100000. Abundance of ions other 
              than [M+H]+ was divided by 10 to improve resemblance to a real MS data.""")
@@ -68,26 +69,26 @@ def instructions():
              composition in our own experiments and on the list of most common ions 
              provided in article from [M. R. Blumer et al.](https://pubs.acs.org/doi/10.1021/acs.jcim.1c00579).""" )
     st.write(""" * Warning column in the results of matching can tell you **'Possibility of wrong matching! Difference from previous
-             or following m/z in full theoretical table is lower than the largest experimental error set by user.'** Message
-             is generated based on m/z differences between ions and the experimental error defined by user. In the case of 
-             experimental errors defined individually for each experimental file, the largest defined error is used to 
+             or following *m/z* in full theoretical table is lower than the largest mass accuracy value set by user.'** Message
+             is generated based on *m/z* differences between ions and the mass accuracy defined by user. In the case of 
+             mass accuracy defined individually for each experimental file, the largest defined mass accuracy is used to 
              determine lines with the warning message. The message will be seen for any matched ion which could fall under two or more 
-             ions from the full theoretical table. Nevertheless, matching of experimental m/z is always to the nearest theoretical m/z. 
-             Formula for calculating the warning: (m/z(ion1) - m/z(ion2)) < 2*experimental_error """)
+             ions from the full theoretical table. Nevertheless, matching of experimental *m/z* is always to the nearest theoretical *m/z*. 
+             Formula for calculating the warning: (*m/z*(ion1) - *m/z*(ion2)) < 2*mass_accuracy """)
     st.write(""" * Do you miss some ions? Here is a tip...  
-             You can use your starting theoretical m/z and add ions from our list. 
+             You can use your starting theoretical monoisotopic masses and add ions from our list. 
              Run the matching and download results, one of the sheets contains complete
-             table of used theoretical masses. You can use this sheet to make new 
-             table of theoretical masses to which you will manually add other ions 
-             of your interest. We propose to calculate theoretical m/z in Excel calculator
+             table of used theoretical *m/z* values. You can use this sheet to make new 
+             table of theoretical *m/z* to which you will manually add other ions 
+             of your interest. We propose to calculate theoretical *m/z* in Excel calculator
              provided by [Fiehn Lab](https://fiehnlab.ucdavis.edu/staff/kind/metabolomics/ms-adduct-calculator).
              Finally, you will use this table in next round of matching but instead of adding ions
-             you will use third option of [M] because your table already contains all 
+             you will use third option to keep provided *m/z* because your table already contains all 
              ions of interest.""" )
     st.write(""" * Plots can be switched to fullscreen view""")
     st.write(""" * Bar width in the plots...  
              While it is always 0.0001 Da for experimental data, the bar width for 
-             theoretical m/z values corresponds to double of experimental error or to 0.005 Da if the error is set to zero.
+             theoretical *m/z* values corresponds to double of mass accuracy or to 0.005 Da if the mass accuracy is set to zero.
              This may help to visually evaluate your settings for matching.""")
     st.write(""" * If you need to calculate a monoisotopic mass or are trying to find a possible molecular formula for 
              an unidentified mass, we recommend using [ChemCalc](http://chemcalc.org/).""")

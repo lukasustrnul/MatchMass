@@ -87,8 +87,8 @@ def add_ions(theor_df, ion_list, exp_err):
         theor_df_full['diff'] = theor_df_full['m/z'].diff()
         theor_df_full['diff2'] = theor_df_full['m/z'].diff(periods=-1)
         theor_df_full['diff2'] = -theor_df_full['diff2']
-        theor_df_full.loc[theor_df_full['diff']<exp_err, 'warning'] = 'Possibility of wrong matching! Difference from previous or following m/z in full theoretical table is lower than the largest experimental error set by user'
-        theor_df_full.loc[theor_df_full['diff2']<exp_err, 'warning'] = 'Possibility of wrong matching! Difference from previous or following m/z in full theoretical table is lower than the largest experimental error set by user'
+        theor_df_full.loc[theor_df_full['diff']<exp_err, 'warning'] = 'Possibility of wrong matching! Difference from previous or following m/z in full theoretical table is lower than the largest mass accuracy value set by user'
+        theor_df_full.loc[theor_df_full['diff2']<exp_err, 'warning'] = 'Possibility of wrong matching! Difference from previous or following m/z in full theoretical table is lower than the largest mass accuracy value set by user'
         # rearrange columns and keep only necessary ones
         theor_df_full = theor_df_full[['name','ID','ion','charge','m/z','warning']]
         return theor_df_full
@@ -210,7 +210,7 @@ def match_data(exp_dfs_table, exp_dfs, theor_df_full):
         all_in_one = all_in_one[[col for col in all_in_one.columns if col != 'warning'] + ['warning']]
         return (theor_df_full, exp_dfs_matched, all_in_one, 'Matches were found!')
     except:
-        return (pd.DataFrame(),pd.DataFrame(),pd.DataFrame(), 'Something went wrong! Have you uploaded all necessary files? You can try to set larger error, add ions, check your data. Maybe, there are no matches anyway!')
+        return (pd.DataFrame(),pd.DataFrame(),pd.DataFrame(), 'Something went wrong! Have you uploaded all necessary files? You can try to set larger mass accuracy value, add ions, check your data. Maybe, there are no matches anyway!')
 
     
     
