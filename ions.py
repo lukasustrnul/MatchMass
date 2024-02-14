@@ -37,7 +37,7 @@ MplusAc = {'ion':'[M+Ac]-','add_mass':+59.013851, 'multiply_by':1, 'charge':'1-'
 
 
 # make a list of all dictionaries
-ion_list = [M_orig, Mplus, MplusH, MplusNa, MplusK, MplusNH4, Mplus2H, M2plusH, Mplus3H, MminusH, M2minusH, Mminus2H, MplusCl]
+ion_list = [M_orig, Mplus, MplusH, MplusNa, MplusK, MplusNH4, Mplus2H, M2plusH, MplusHplusNa, Mplus2Na, Mplus3H, MminusH20plusH, MminusH20plusNa, MminusH, M2minusH, Mminus2H, MplusCl, MplusFA, MplusAc]
 pos_ion_list = [Mplus, MplusH, MplusNa, MplusK, MplusNH4, M2plusH, Mplus2H, MplusHplusNa, Mplus2Na, Mplus3H, MminusH20plusH, MminusH20plusNa]
 neg_ion_list = [MminusH, M2minusH, Mminus2H, MplusCl, MplusFA, MplusAc]
 
