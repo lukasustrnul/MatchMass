@@ -179,8 +179,7 @@ with col11:
     for ion in pos_ion_list:
         ion['add_to_df'] = st.checkbox(ion['ion'], help='tick to add ion to the theoretical table')
 with col12:
-    st.write('''Pick from following for negative mode MS experimental results.  
-             FA = formate anion, Ac = acetate anion''')
+    st.write('''Pick from following for negative mode MS experimental results.''')
     for ion in neg_ion_list:
         ion['add_to_df'] = st.checkbox(ion['ion'], help='tick to add ion to the theoretical table')
 with col13:
