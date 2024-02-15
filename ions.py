@@ -32,6 +32,7 @@ MminusH = {'ion':'[M-H]-','add_mass':-1.007276, 'multiply_by':1, 'charge':'1-', 
 M2minusH = {'ion':'[2M-H]-','add_mass':-1.007276, 'multiply_by':2, 'charge':'1-', 'add_to_df':False}
 Mminus2H = {'ion':'[M-2H]2-','add_mass':-1.007276, 'multiply_by':0.5, 'charge':'2-', 'add_to_df':False}
 MplusCl = {'ion':'[M+Cl]-','add_mass':+34.969402, 'multiply_by':1, 'charge':'1-', 'add_to_df':False}
+MplusBr = {'ion':'[M+Br]-','add_mass':+78.918885, 'multiply_by':1, 'charge':'1-', 'add_to_df':False}
 MplusFA = {'ion':'[M+HCOO]-','add_mass':+44.998201, 'multiply_by':1, 'charge':'1-', 'add_to_df':False}
 MplusAc = {'ion':'[M+CH3COO]-','add_mass':+59.013851, 'multiply_by':1, 'charge':'1-', 'add_to_df':False}
 MplusTFA = {'ion':'[M+CF3COO]-','add_mass':+112.985589, 'multiply_by':1, 'charge':'1-', 'add_to_df':False}
@@ -39,8 +40,8 @@ MplusTFA = {'ion':'[M+CF3COO]-','add_mass':+112.985589, 'multiply_by':1, 'charge
 
 
 # make a list of all dictionaries
-ion_list = [M_orig, Mplus, MplusH, MplusNa, MplusK, MplusNH4, Mplus2H, M2plusH, MplusHplusNa, Mplus2Na, Mplus3H, MminusH20plusH, MminusH20plusNa, MminusH, M2minusH, Mminus2H, MplusCl, MplusFA, MplusAc, MplusTFA]
+ion_list = [M_orig, Mplus, MplusH, MplusNa, MplusK, MplusNH4, Mplus2H, M2plusH, MplusHplusNa, Mplus2Na, Mplus3H, MminusH20plusH, MminusH20plusNa, MminusH, M2minusH, Mminus2H, MplusCl, MplusBr, MplusFA, MplusAc, MplusTFA]
 pos_ion_list = [Mplus, MplusH, MplusNa, MplusK, MplusNH4, M2plusH, Mplus2H, MplusHplusNa, Mplus2Na, Mplus3H, MminusH20plusH, MminusH20plusNa]
-neg_ion_list = [MminusH, M2minusH, Mminus2H, MplusCl, MplusFA, MplusAc, MplusTFA]
+neg_ion_list = [MminusH, M2minusH, Mminus2H, MplusCl, MplusBr, MplusFA, MplusAc, MplusTFA]
 
 
