@@ -477,7 +477,7 @@ def download_excel_with_results(experimental_dfs_additional_info_df: pd.DataFram
         for key, df in dict_containing_matched_experimental_dfs.items():
             df.to_excel(writer, sheet_name=key)
         # Close the Pandas Excel writer and output the Excel file.
-        writer.save()
+        writer.close()
     return buffer
 
 
