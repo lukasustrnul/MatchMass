@@ -1,47 +1,63 @@
-# -*- coding: utf-8 -*-
 """
-Created on Sat Jan 13 15:13:31 2024
+Author: Lukáš Ustrnul
+GitHub: https://github.com/lukasustrnul
+LinkedIn: https://www.linkedin.com/in/luk%C3%A1%C5%A1-ustrnul-058420123/
 
-@author: Lukáš Ustrnul
+File: ions_enum.py
+Created on 16.03.2024
 """
+from typing import NamedTuple
+from enum import Enum
 import numpy as np
-# Data needed for calculations of molecular masses and so on.
-
-# dictionary for particle provided by user
-M_orig = {'ion':'use uploaded theoretical m/z','add_mass':0, 'multiply_by':1, 'charge':np.nan, 'add_to_df':False}
-
-# list of ions as a dictionaries:
-# cations
-Mplus = {'ion':'M+','add_mass':-0.00054858026, 'multiply_by':1, 'charge':'1+', 'add_to_df':False}
-MplusH = {'ion':'[M+H]+','add_mass':+1.007276, 'multiply_by':1, 'charge':'1+', 'add_to_df':False} 
-MplusNa = {'ion':'[M+Na]+','add_mass':+22.989218, 'multiply_by':1, 'charge':'1+', 'add_to_df':False}
-MplusK = {'ion':'[M+K]+','add_mass':+38.963158, 'multiply_by':1, 'charge':'1+', 'add_to_df':False}
-MplusNH4 = {'ion':'[M+NH4]+','add_mass':+18.033823, 'multiply_by':1, 'charge':'1+', 'add_to_df':False}
-Mplus2H = {'ion':'[M+2H]2+','add_mass':+1.007276, 'multiply_by':0.5, 'charge':'2+', 'add_to_df':False}
-M2plusH = {'ion':'[2M+H]+','add_mass':+1.007276, 'multiply_by':2, 'charge':'1+', 'add_to_df':False}
-MplusHplusNa = {'ion':'[M+H+Na]2+','add_mass':+11.998247 , 'multiply_by':0.5, 'charge':'2+', 'add_to_df':False}
-Mplus2Na = {'ion':'[M+2Na]2+','add_mass':+22.989218, 'multiply_by':0.5, 'charge':'2+', 'add_to_df':False}
-Mplus3H = {'ion':'[M+3H]3+','add_mass':+1.007276, 'multiply_by':0.3333333, 'charge':'3+', 'add_to_df':False}
-
-# neutral losses cations
-MminusH20plusH = {'ion':'[M-H2O+H]+ (neutral loss)','add_mass':-17.003284, 'multiply_by':1, 'charge':'1+', 'add_to_df':False}
-MminusH20plusNa = {'ion':'[M-H2O+Na]+ (neutral loss)','add_mass':+4.978658, 'multiply_by':1, 'charge':'1+', 'add_to_df':False}
-
-# anions
-MminusH = {'ion':'[M-H]-','add_mass':-1.007276, 'multiply_by':1, 'charge':'1-', 'add_to_df':False}
-M2minusH = {'ion':'[2M-H]-','add_mass':-1.007276, 'multiply_by':2, 'charge':'1-', 'add_to_df':False}
-Mminus2H = {'ion':'[M-2H]2-','add_mass':-1.007276, 'multiply_by':0.5, 'charge':'2-', 'add_to_df':False}
-MplusCl = {'ion':'[M+Cl]-','add_mass':+34.969402, 'multiply_by':1, 'charge':'1-', 'add_to_df':False}
-MplusBr = {'ion':'[M+Br]-','add_mass':+78.918885, 'multiply_by':1, 'charge':'1-', 'add_to_df':False}
-MplusFA = {'ion':'[M+HCOO]-','add_mass':+44.998201, 'multiply_by':1, 'charge':'1-', 'add_to_df':False}
-MplusAc = {'ion':'[M+CH3COO]-','add_mass':+59.013851, 'multiply_by':1, 'charge':'1-', 'add_to_df':False}
-MplusTFA = {'ion':'[M+CF3COO]-','add_mass':+112.985589, 'multiply_by':1, 'charge':'1-', 'add_to_df':False}
 
 
+class IonInfo(NamedTuple):
+    """
+    Namedtuple to improve calls for ion information.
+    """
+    ion_formula: str
+    add_mass: float
+    multiply_by: float
+    charge: str
+    ion_type: str
+    neutral_loss: bool
+    neutral_loss_molecule: str
 
-# make a list of all dictionaries
-ion_list = [M_orig, Mplus, MplusH, MplusNa, MplusK, MplusNH4, Mplus2H, M2plusH, MplusHplusNa, Mplus2Na, Mplus3H, MminusH20plusH, MminusH20plusNa, MminusH, M2minusH, Mminus2H, MplusCl, MplusBr, MplusFA, MplusAc, MplusTFA]
-pos_ion_list = [Mplus, MplusH, MplusNa, MplusK, MplusNH4, M2plusH, Mplus2H, MplusHplusNa, Mplus2Na, Mplus3H, MminusH20plusH, MminusH20plusNa]
-neg_ion_list = [MminusH, M2minusH, Mminus2H, MplusCl, MplusBr, MplusFA, MplusAc, MplusTFA]
+
+class Ion(Enum):
+    """
+    A custom class inheriting from Enum. Stores ion information which can be used to calculate molecular masses.
+    """
+
+    # dictionary for particle provided by user
+    M_orig = IonInfo('use uploaded theoretical m/z',  0,  1.0, np.nan, 'provided_by_user', False, '')
+    
+    # cations
+    Mplus = IonInfo('M+', -0.00054858026, 1.0, '1+', 'cation', False, '')
+    MplusH = IonInfo('[M+H]+', +1.007276, 1.0, '1+', 'cation', False, '')
+    MplusNa = IonInfo('[M+Na]+', +22.989218, 1.0, '1+', 'cation', False, '')
+    MplusK = IonInfo('[M+K]+', +38.963158, 1.0, '1+', 'cation', False, '')
+    MplusNH4 = IonInfo('[M+NH4]+', +18.033823, 1.0, '1+', 'cation', False, '')
+    Mplus2H = IonInfo('[M+2H]2+', +1.007276, 0.5, '2+', 'cation', False, '')
+    M2plusH = IonInfo('[2M+H]+', +1.007276, 2.0, '1+', 'cation', False, '')
+    MplusHplusNa = IonInfo('[M+H+Na]2+', +11.998247, 0.5, '2+', 'cation', False, '')
+    Mplus2Na = IonInfo('[M+2Na]2+', +22.989218, 0.5, '2+', 'cation', False, '')
+    Mplus3H = IonInfo('[M+3H]3+', +1.007276, 0.3333333, '3+', 'cation', False, '')
+
+    # neutral losses cations
+    MminusH20plusH = IonInfo('[M-H2O+H]+ (neutral loss)', -17.003284, 1.0, '1+', 'cation', True, 'H2O')
+    MminusH20plusNa = IonInfo('[M-H2O+Na]+ (neutral loss)', +4.978658, 1.0, '1+', 'cation', True, 'H2O')
+    
+    # anions
+    MminusH = IonInfo('[M-H]-', -1.007276, 1.0, '1-', 'anion', False, '')
+    M2minusH = IonInfo('[2M-H]-', -1.007276, 2.0, '1-', 'anion', False, '')
+    Mminus2H = IonInfo('[M-2H]2-', -1.007276, 0.5, '2-', 'anion', False, '')
+    MplusCl = IonInfo('[M+Cl]-', +34.969402, 1.0, '1-', 'anion', False, '')
+    MplusBr = IonInfo('[M+Br]-', +78.918885, 1.0, '1-', 'anion', False, '')
+    MplusFA = IonInfo('[M+HCOO]-', +44.998201, 1.0, '1-', 'anion', False, '')
+    MplusAc = IonInfo('[M+CH3COO]-', +59.013851, 1.0, '1-', 'anion', False, '')
+    MplusTFA = IonInfo('[M+CF3COO]-', +112.985589, 1.0, '1-', 'anion', False, '')
 
 
+if __name__ == '__main__':
+    pass

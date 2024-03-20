@@ -1,17 +1,18 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Jan 25 16:25:21 2024
+Author: Lukáš Ustrnul
+GitHub: https://github.com/lukasustrnul
+LinkedIn: https://www.linkedin.com/in/luk%C3%A1%C5%A1-ustrnul-058420123/
 
-@author: Lukáš
+Created on Thu Jan 25 16:25:21 2024
 """
 
 import streamlit as st
-from MS_func import show_counter
+from ui_functions import show_count_of_downloads
 
 
-
-def about():
-    st.write("""##### Number of files downloaded from the web:""", show_counter())
+def about_expander_content():
+    st.write("""##### Number of files downloaded from the web:""", show_count_of_downloads())
     st.write("##### ")
     st.write("#### About project")
     st.write("##### Motivation behind developing MatchMass online tool")
@@ -25,12 +26,13 @@ def about():
     st.write("""In order to monitor the progress of the reaction, we took and measured samples at regular intervals. 
              This produced an excessive amount of data that was tedious and laborious to match manually with all the possible
              theoretical molecules that are formed in the process. And that's why the matching needed to be automated! 
-             Moreover, we realized that such a tool in a form of online web app could be useful for other researchers too. """)
+             Moreover, we realized that such a tool in a form of online web app could be useful for other researchers too.""")
     st.write("##### ")
     st.write("##### Research group and university")
     st.write("""The original research using the MatchMass tool was conducted in Professor Riina Aav's 
              [Supramolecular chemistry group](https://riinaaav.wixsite.com/grouppage).
-             The scientific group is based at the Department of Chemistry and Biotechnology, Tallinn University of Technology ([TalTech](https://taltech.ee/en/)), Estonia """)
+             The scientific group is based at the Department of Chemistry and Biotechnology, 
+             Tallinn University of Technology ([TalTech](https://taltech.ee/en/)), Estonia """)
     st.markdown("***")
     st.write("#### About author")
     st.write("##### Lukáš Ustrnul")
@@ -45,16 +47,23 @@ def about():
     st.write("#### Acknowledgement")
     st.write("##### People")
     st.write("""I want to acknowledge Tatsiana Jarg ([ETIS](https://www.etis.ee/CV/Tatsiana_Shalima/eng)) for her ideas and feedback, 
-             Prof. Riina Aav ([ETIS](https://www.etis.ee/CV/Riina_Aav)) for her support, and all members of Supramolecular group for positive atmosphere.""")
+             Mario Öeren ([ETIS](https://www.etis.ee/CV/mario.oeren/eng/)) for feedback on code,
+             Irina Osadchuk ([ETIS](https://www.etis.ee/CV/Irina_Osadchuk/eng)) for administration of virtual machine,
+             Lauri Anton ([ETIS](https://www.etis.ee/CV/Lauri_Anton/eng/)) for technical help, 
+             Prof. Riina Aav ([ETIS](https://www.etis.ee/CV/Riina_Aav)) for her support, 
+             and all members of Supramolecular group for positive atmosphere.""")
     st.write("##### ")
     st.write("##### Funding")
     st.write("""Development of MatchMass was supported by Estonian Research Council ([ETAG](https://etag.ee/en/)) grants [PRG399](https://www.etis.ee/Portal/Projects/Display/821f6a9c-3f7d-49c4-86b8-2747c4e210a2),
              [MOBJD592](https://www.etis.ee/Portal/Projects/Display/6dd1c9dc-6e88-4983-98c8-3b31f325bfd0), 
              [PRG2169](https://www.etis.ee/Portal/Projects/Display/2765d91c-0c57-43ee-ae98-d7fefbcedf88)""")
-    col1, col2, col3 = st.columns(3, gap = 'medium')
+    col1, col2, col3 = st.columns(3, gap='medium')
     with col1:
         st.image('files/Estonian-Research-Council-logo-color_RGB.png'
                  )
         st.image('files/TalTech_logo_JPG.jpg'
                  )
 
+
+if __name__ == '__main__':
+    pass
