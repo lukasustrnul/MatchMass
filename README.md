@@ -1,7 +1,7 @@
 # [MatchMass - Mass Spectrometry Matching Tool](https://matchmass.taltech.ee/)
 ### Compare your experimental data from mass spectrometry (MS) with a table of theoretical mass-to-charge ratio (m/z) values to quickly find out which molecules and ions of interest are present in the sample.
 ***
-Note: Main application file in the repository is MatchMass.py. Other files contains additional content, data and function definitions.
+Note: Main application file in the repository is MatchMass_main.py. Other files contains additional content, data and function definitions.
 
 ## **Main Goal** 
 _Provide user-friendly tool which will be able to find matches between large sets of experimental values and a list of theoretical values of interest._
