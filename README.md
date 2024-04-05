@@ -26,6 +26,10 @@ Although MS is very widely used method and various free online tools exist, we d
 
 _Therefore, main benefits of MatchMass are:_ **(1.)** possibility to **upload table** of theoretical masses, **(2.)** calculate _m/z_ of ions **for each molecule** in the provided table and **(3.)** quickly compare experimental data to a long list (table) of theoretical _m/z_ values.
 
+## **Further Plans**
+- Add tests to make it easier for others to contribute to the development of MatchMass
+- Add security features to reduce risks related to upload of files containing malicious code
+
 ## **How It Works?** 
 MatchMass takes at least one file with experimental results (_m/z_ of signal and its abundance) and exactly one file containing theoretical _m/z_ values with names of molecules. Then, it will perform matching using user-defined experimental errors, abundance threshold (minimum signal intensity), and ions of interest. Ions of molecules from theoretical table are found in the experimental data. The results of matching can be checked in plot and in table with aggregated results from all provided experimental files. Finally, the data can be downloaded as a MS Excel file containing all important details. 
 
